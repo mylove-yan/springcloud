@@ -1,9 +1,10 @@
+###服务端口号(本身是一个web项目)
 server:
-  port: 8082 #服务端口
-###起个名字作为服务名称(该服务注册到eureka注册中心的名称，比如订单服务)
+  port: 8071
+###起个名字作为服务名称(该服务注册到eureka注册中心的名称，比如商品服务)
 spring:
   application:
-    name: app-order
+    name: app-item
 ###服务注册到eureka注册中心的地址
 eureka:
   client:
