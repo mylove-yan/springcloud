@@ -10,7 +10,5 @@ spring:
           uri: https://github.com/mylove-yan/springcloud.git
           search-paths:
             - all-config		#配置文件目录地址
-          username: 	#码云账号（公有项目不需要设置）
-          password:  	#码云密码（公有项目不需要设置）
       label: master	#分支名称
 
