@@ -1,34 +1,34 @@
 server:
-  port: 8087 #·şÎñ¶Ë¿Ú
+  port: 8087 #æœåŠ¡ç«¯å£
 spring:
   application:
-    name: app-zuul-gateway #Ö¸¶¨·şÎñÃû
-###·şÎñ×¢²áµ½eureka×¢²áÖĞĞÄµÄµØÖ·
+    name: app-zuul-gateway #æŒ‡å®šæœåŠ¡å
+###æœåŠ¡æ³¨å†Œåˆ°eurekaæ³¨å†Œä¸­å¿ƒçš„åœ°å€
 eureka:
   client:
     service-url:
       defaultZone: http://zpc:123456@127.0.0.1:8100/eureka/,http://zpc:123456@127.0.0.1:9100/eureka/
-    ###ÒòÎª¸ÃÓ¦ÓÃÎª·şÎñÌá¹©Õß£¬ÊÇeurekaµÄÒ»¸ö¿Í»§¶Ë£¬ĞèÒª×¢²áµ½×¢²áÖĞĞÄ
+    ###å› ä¸ºè¯¥åº”ç”¨ä¸ºæœåŠ¡æä¾›è€…ï¼Œæ˜¯eurekaçš„ä¸€ä¸ªå®¢æˆ·ç«¯ï¼Œéœ€è¦æ³¨å†Œåˆ°æ³¨å†Œä¸­å¿ƒ
     register-with-eureka: true
-    ###ÊÇ·ñĞèÒª´ÓeurekaÉÏ¼ìË÷·şÎñ
+    ###æ˜¯å¦éœ€è¦ä»eurekaä¸Šæ£€ç´¢æœåŠ¡
     fetch-registry: true
   instance:
-    prefer-ip-address: true #½«×Ô¼ºµÄipµØÖ·×¢²áµ½Eureka·şÎñÖĞ
+    prefer-ip-address: true #å°†è‡ªå·±çš„ipåœ°å€æ³¨å†Œåˆ°EurekaæœåŠ¡ä¸­
     ip-address: 127.0.0.1
-    instance-id: ${spring.application.name}###${server.port} #Ö¸¶¨ÊµÀıid
+    instance-id: ${spring.application.name}###${server.port} #æŒ‡å®šå®ä¾‹id
 
 
 
 zuul:
-  #ÒòÎªzuulÓĞÄ¬ÈÏµÄÒşÉä»úÖÆ£¬Èç¹ûÃ»ÓĞÒÔÏÂµÄÅäÖÃ£¬ÄÇÃ´·ÃÎÊhttp://ip:port/c/Ò²¿ÉÒÔ·ÃÎÊµ½ÄãµÄc·şÎñ£¬Èç¹ûÄã²»ÏëÏòÍâ½ç±©Â¶³ıÄãÅäÖÃµÄÒşÉäÖ®ÍâµÄ·şÎñ£¬¿ÉÒÔ¼ÓÉÏzuul.ignored-services:*
+  #å› ä¸ºzuulæœ‰é»˜è®¤çš„éšå°„æœºåˆ¶ï¼Œå¦‚æœæ²¡æœ‰ä»¥ä¸‹çš„é…ç½®ï¼Œé‚£ä¹ˆè®¿é—®http://ip:port/c/ä¹Ÿå¯ä»¥è®¿é—®åˆ°ä½ çš„cæœåŠ¡ï¼Œå¦‚æœä½ ä¸æƒ³å‘å¤–ç•Œæš´éœ²é™¤ä½ é…ç½®çš„éšå°„ä¹‹å¤–çš„æœåŠ¡ï¼Œå¯ä»¥åŠ ä¸Šzuul.ignored-services:*
   ignored-services: '*'
-  routes: #¶¨Òå·şÎñ×ª·¢¹æÔò
-    item-service: #item-serviceÕâ¸öÃû×ÖÊÇÈÎÒâĞ´µÄ
-      path: /item-service/** #Æ¥Åäitem-serviceµÄÇëÇóapp-item·şÎñ
-      #url: http://127.0.0.1:8081 #ÕæÕıµÄÎ¢·şÎñµØÖ·
+  routes: #å®šä¹‰æœåŠ¡è½¬å‘è§„åˆ™
+    item-service: #item-serviceè¿™ä¸ªåå­—æ˜¯ä»»æ„å†™çš„
+      path: /item-service/** #åŒ¹é…item-serviceçš„è¯·æ±‚app-itemæœåŠ¡
+      #url: http://127.0.0.1:8081 #çœŸæ­£çš„å¾®æœåŠ¡åœ°å€
       serviceid: app-item
-    order-service: #Ãû×Ö¾¡Á¿ºÍÒµÎñÏµÍ³Ïà¹Ø
-      path: /order-service/** #Æ¥Åäorder-serviceµÄÇëÇóapp-order·şÎñ
+    order-service: #åå­—å°½é‡å’Œä¸šåŠ¡ç³»ç»Ÿç›¸å…³
+      path: /order-service/** #åŒ¹é…order-serviceçš„è¯·æ±‚app-orderæœåŠ¡
       serviceid: app-order
 
 
