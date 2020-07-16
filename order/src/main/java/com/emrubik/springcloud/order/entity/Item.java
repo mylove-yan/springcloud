@@ -31,7 +31,7 @@ public class Item {
     public Item() {
     }
 
-    public Item(long id, String title, String pic, String desc, Long price) {
+    public Item(Long id, String title, String pic, String desc, Long price) {
         this.id = id;
         this.title = title;
         this.pic = pic;

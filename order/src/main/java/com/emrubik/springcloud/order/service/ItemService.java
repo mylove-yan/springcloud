@@ -6,6 +6,7 @@
  *******************************************************************************/
 package com.emrubik.springcloud.order.service;
 
+import com.emrubik.springcloud.order.client.ItemFeignClient;
 import com.emrubik.springcloud.order.entity.Item;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,20 +40,17 @@ public class ItemService {
         return result;
     }
 
-    /**
-     * 进行容错处理
-     * fallbackMethod的方法参数个数类型要和原方法一致
-     *
-     * @param id
-     * @return
-     */
-    @HystrixCommand(fallbackMethod = "queryItemByIdFallbackMethod")
+    @Autowired
+    private ItemFeignClient itemFeignClient;
+
+    //@HystrixCommand(fallbackMethod = "queryItemByIdFallbackMethod")
     public Item queryItemById3(Long id) {
         String itemUrl = "http://app-item/item/{id}";
-        Item result = restTemplate.getForObject(itemUrl, Item.class, id);
+        Item result = itemFeignClient.queryItemById(id);
         System.out.println("===========HystrixCommand queryItemById-线程池名称：" + Thread.currentThread().getName() + "订单系统调用商品服务,result:" + result);
         return result;
     }
+
 
     /**
      * 请求失败执行的方法
